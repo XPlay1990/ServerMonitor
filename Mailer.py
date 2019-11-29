@@ -1,7 +1,7 @@
 import logging
 import pymsteams
 
-connectorCard = "https://outlook.office.com/webhook/64e5918b-4481-4afd-9a3d-9e58a791a2d8@b79b5471-e1ff-402e-9d2f-325e42c29942/IncomingWebhook/b0f0b5bf882446548a52b6374c02a5ab/ba84cd1b-7ec2-4986-bf39-86a6f0a0119f"
+connectorCard = "connectorcard"
 
 
 def sendMicrosoftTeamsMessage(msg):
