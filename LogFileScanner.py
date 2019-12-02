@@ -1,6 +1,7 @@
 import os
 import time
 import Mailer
+import socket
 
 # Set the filename and open the file
 filename = 'server.log'
@@ -33,7 +34,7 @@ def checkLine(line):
 
 
 def notifyTeam(line):
-    Mailer.sendMicrosoftTeamsMessage("Error Detected in Line: " + line)
+    Mailer.sendMicrosoftTeamsMessage(socket.gethostname() + "______ Error Detected in Line: _______" + line)
 
 
 scanFile()
