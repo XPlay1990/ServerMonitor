@@ -7,7 +7,7 @@ filename = 'server.log'
 filepath = '/usr/local/jboss/server/abbino/log/' + filename
 file = open(filepath, 'r')
 
-searchStrings = ["FATAL", "OutOfMemory", "com.gamnet.abbino.po.web.actions.SignOnAction"]
+searchStrings = ["FATAL", "OutOfMemory"]
 
 # Find the size of the file and move to the end
 st_results = os.stat(filepath)
