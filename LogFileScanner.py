@@ -34,7 +34,7 @@ def checkLine(line):
 
 
 def notifyTeam(line):
-    Mailer.sendMicrosoftTeamsMessage(socket.gethostname().capitalize() + " - Error Detected in Line: " + line)
+    Mailer.sendMicrosoftTeamsMessage(socket.gethostname().upper() + " - Error Detected in Line: " + line)
 
 
 scanFile()
