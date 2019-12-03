@@ -2,13 +2,14 @@ import logging
 import os
 import socket
 import time
-
+import datetime
 import Mailer
 
 #####################
 #   Logging
 #####################
-logFileHandler = logging.FileHandler("deploy_" + today + ".log")
+today = '{:%Y-%m-%d_%H-%M-%S}'.format(datetime.datetime.now())
+logFileHandler = logging.FileHandler("ServerMonitor_" + today + ".log")
 logFileHandler.setLevel(logging.DEBUG)
 formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logFileHandler.setFormatter(formatter)
