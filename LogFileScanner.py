@@ -1,12 +1,27 @@
+import logging
 import os
-import time
-import Mailer
 import socket
+import time
+
+import Mailer
+
+#####################
+#   Logging
+#####################
+logFileHandler = logging.FileHandler("deploy_" + today + ".log")
+logFileHandler.setLevel(logging.DEBUG)
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+logFileHandler.setFormatter(formatter)
+consoleLogger = logging.StreamHandler()
+consoleLogger.setLevel(logging.INFO)
+logging.basicConfig(level=logging.DEBUG, handlers=[logFileHandler, consoleLogger])
 
 # Set the filename and open the file
 filename = 'server.log'
 filepath = '/usr/local/jboss/server/abbino/log/' + filename
 file = open(filepath, 'r')
+
+sleepTime = 10
 
 searchStrings = ["FATAL", "OutOfMemory"]
 
@@ -21,15 +36,18 @@ def scanFile():
         # where = file.tell()  # current position of the reader
         line = file.readline()  # read next line
         while line:
+            logging.debug("Line found. Reading...")
             checkLine(line)  # already has newline
             line = file.readline()  # read next line
         if not line:
-            time.sleep(1)
+            logging.debug("No Line found. Sleeping...")
+            time.sleep(sleepTime)
 
 
 def checkLine(line):
     for searchString in searchStrings:
         if searchString in line:
+            logging.info("Searchterm found. Notifying Team.")
             notifyTeam(line)
 
 
