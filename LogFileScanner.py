@@ -24,7 +24,7 @@ file = open(filepath, 'r')
 
 sleepTime = 10
 
-searchStrings = ["FATAL", "OutOfMemory"]
+searchStrings = ["FATAL", "OutOfMemory", "java.net.SocketException: Broken pipe"]
 
 # Find the size of the file and move to the end
 st_results = os.stat(filepath)
